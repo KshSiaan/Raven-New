@@ -1,5 +1,7 @@
 import CircularText from "@/components/blocks/TextAnimations/CircularText/CircularText";
 import Navs from "@/components/navs";
+import { Button } from "@/components/ui/button";
+import ThemeChanger from "@/components/ui/theme-changer";
 
 export default function Layout({
   children,
@@ -19,7 +21,7 @@ export default function Layout({
               spinDuration={30}
               className="text-foreground!"
             />
-            <div className="size-[100px] rounded-full bg-foreground absolute left-full top-full -translate-x-1/2 -translate-y-1/2 flex justify-center items-center"></div>
+            <ThemeChanger />
           </div>
         </div>
       </main>

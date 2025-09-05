@@ -4,9 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 export default function Navs() {
   const path = usePathname();
+  const { resolvedTheme } = useTheme();
 
   const navItems = [
     { label: "HOME", href: "/" },
@@ -31,7 +33,11 @@ export default function Navs() {
                   <motion.span
                     animate={{
                       scale: isActive ? 1.8 : 1,
-                      color: isActive ? "#000" : "#fff",
+                      color: isActive
+                        ? resolvedTheme === "dark"
+                          ? "#fff"
+                          : "#000"
+                        : "#fff",
                     }}
                     transition={{
                       type: "spring",
@@ -79,7 +85,7 @@ export default function Navs() {
         //   damping: 25,
         // }}
         className={cn(
-          "fixed text-9xl font-bold text-background text-shadow-border"
+          "fixed text-9xl font-bold text-background dark:text-foreground text-shadow-border"
           // isHome && "-translate-1/2"
         )}
       >
